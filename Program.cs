@@ -3,7 +3,8 @@
     internal class Program
     {
         static void Main(string[] args)
-        { 
+        {
+            #region girdiler
             //Kim Milyoner Olmak İster??
             Console.WriteLine("Kim Milyoner Olmak İster\n");
             Console.WriteLine("Kim Milyoner Olmak İster\n");
@@ -22,6 +23,8 @@
 
             Console.Write("Kuralları Biliyor Musunuz? : ");
             char kuralCevap = char.Parse(Console.ReadLine().ToUpper());
+            #endregion girdiler
+            #region kural-hazır
             if (kuralCevap != 'E')
             {
                 // TODO: Kurallar eklenecek.
@@ -37,6 +40,8 @@
                 Console.WriteLine("Hazır olduğunuzda Enter'a Basın");
                 Console.ReadLine();
             }
+            #endregion kural-hazır
+            #region Soru ödül değişkenleri
             bool seyirciHak = true, yuzdeHak = true, telefonHak = true;
             int kasa = 0;
 
@@ -45,6 +50,7 @@
             bool gizleA, gizleB, gizleC, gizleD;
             string soru, a, b, c, d;
             char cevap;
+            #endregion Soru ödül değişkenleri
             #region Soru Bilgileri
             soruNo = 1;
             soru = "Türkiyenin Başkenti Neresidir?";
@@ -63,9 +69,10 @@
             // TODO: Daha iyi olabirlir mi? Her seferinde bunu tekrarlamaya gerek yok gibi.
             gizleA = false; gizleB = false;
             gizleC = false; gizleD = false;
-        #endregion
-        // Soru Kalıbı
-        soruNoktasi:
+#endregion
+            #region Soru Kalıbı
+// Soru Kalıbı
+soruNoktasi:
             Console.Clear();
             Console.WriteLine(soruNo + "-)" + soru);
             Console.WriteLine("A) " + (!gizleA ? a : ""));
@@ -79,7 +86,8 @@
             if (jokerHak) Console.Write(" Joker için J'ye,");
             Console.Write(" Çekilmek için R'ye Basınız: ");
             char secim = char.Parse(Console.ReadLine().ToUpper());
-
+            #endregion Soru Kalıbı
+            #region Joker akış kontrol
             if (secim == 'J')
             {
                 if (!jokerHak)
@@ -131,6 +139,8 @@
 
                 goto yanitNoktasi;
             }
+            #endregion Joker akış kontrol
+            #region Geri çekilme akış kontrol
             else if (secim == 'R')
             {
                 Console.WriteLine(kasa + " TL Kazanacaksınız.");
@@ -146,6 +156,8 @@
                 }
                 goto soruNoktasi;
             }
+            #endregion Geri çekilme akış kontrol
+            #region Cevap Kontrol
             else if (secim != cevap)
             {
                 Console.WriteLine("Elendiniz, Kazandığınız Tutar: " + baraj + " TL");
@@ -153,12 +165,13 @@
                 //return;
                 Environment.Exit(0);
             }
-
+            #endregion Cevap Kontrol
+            #region Kapanış
             kasa = odul;
             Console.WriteLine("Tebrikler, Kazandığınız Tutar: " + kasa + " TL");
             Console.WriteLine("\nSonraki Soruya Geçmek  İçin Enter'a Basın..");
             Console.ReadLine();
-
+            #endregion Kapanış
         }
     }
 }
